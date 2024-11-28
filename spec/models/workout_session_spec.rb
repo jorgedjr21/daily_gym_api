@@ -6,7 +6,8 @@ RSpec.describe WorkoutSession, type: :model do
   end
 
   describe 'associations' do
-    it { should belong_to(:workout_plan) }
+    it { should belong_to(:user) }
+    it { should belong_to(:workout_plan).optional }
     it { should have_many(:workout_session_exercises).dependent(:destroy) }
     it { should have_many(:exercises).through(:workout_session_exercises) }
   end
