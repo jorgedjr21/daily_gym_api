@@ -1,0 +1,30 @@
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ".:/app"
+      - gym_app_api_gems:/usr/local/bundle
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "postgresql://postgres:password@db:5432/gym_app_development"
+      RAILS_ENV: "development"
+      SECRET_KEY_BASE: "e717e662ac0bf02ad21e9142b0db26f5b1ddd61a570ccbfda4d5e27fd70ee72ca69059b2d4a5e4168f47c30c47d24275d8f6e735b9d249308ee7b570a3f86305"
+
+    command: bash -c "rm -f tmp/pids/server.pid && rails server -b 0.0.0.0"
+
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+  gym_app_api_gems:
