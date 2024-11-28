@@ -9,7 +9,8 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: "postgresql://postgres:password@db:5432/gym_app_development"
+      DATABSE_USER: "postgres"
+      DATABSE_PASSWORD: "password"
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"
 
   db:

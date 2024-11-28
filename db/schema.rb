@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_28_193108) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_28_222837) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_exercises_on_name", unique: true
+  end
 
   create_table "jwt_blacklists", force: :cascade do |t|
     t.string "jti"
@@ -35,4 +43,36 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_28_193108) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  create_table "workout_plans", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "workout_session_exercises", force: :cascade do |t|
+    t.bigint "workout_session_id", null: false
+    t.bigint "exercise_id", null: false
+    t.integer "sets"
+    t.integer "reps"
+    t.string "technique"
+    t.decimal "current_weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_workout_session_exercises_on_exercise_id"
+    t.index ["workout_session_id"], name: "index_workout_session_exercises_on_workout_session_id"
+  end
+
+  create_table "workout_sessions", force: :cascade do |t|
+    t.string "name"
+    t.bigint "workout_plan_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workout_plan_id"], name: "index_workout_sessions_on_workout_plan_id"
+  end
+
+  add_foreign_key "workout_session_exercises", "exercises"
+  add_foreign_key "workout_session_exercises", "workout_sessions"
+  add_foreign_key "workout_sessions", "workout_plans"
 end
