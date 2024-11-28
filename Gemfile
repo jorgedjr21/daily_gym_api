@@ -31,11 +31,14 @@ gem "bootsnap", require: false
 #
 gem "rack-cors"    # Para habilitar CORS
 gem "devise"       # Autenticação
+gem "devise-jwt"
 gem "jwt"          # Para autenticação JWT (opcional)
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "rspec-rails", "~> 6.0"
+  gem "factory_bot_rails", "~> 6.2"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
