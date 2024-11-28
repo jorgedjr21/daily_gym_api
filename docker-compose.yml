@@ -10,8 +10,6 @@ services:
       - db
     environment:
       DATABASE_URL: "postgresql://postgres:password@db:5432/gym_app_development"
-      SECRET_KEY_BASE: "e717e662ac0bf02ad21e9142b0db26f5b1ddd61a570ccbfda4d5e27fd70ee72ca69059b2d4a5e4168f47c30c47d24275d8f6e735b9d249308ee7b570a3f86305"
-
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"
 
   db:
