@@ -48,4 +48,5 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "shoulda-matchers", "~> 5.0"
   gem "ffaker"
+  gem "pry-byebug"
 end
