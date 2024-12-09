@@ -2,6 +2,10 @@ class ApplicationController < ActionController::API
   include Devise::Controllers::Helpers
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    render json: { error: exception.message }, status: :not_found
+  end
+
   def authenticate_user!
     unless user_signed_in?
       render json: { error: "You need to sign in or sign up before continuing." }, status: :unauthorized

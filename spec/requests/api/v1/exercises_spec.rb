@@ -9,6 +9,7 @@ RSpec.describe "Api::V1::Exercises", type: :request do
 
   let(:headers) { { "Authorization" => auth_token, "Content-Type" => "application/json" } }
   let(:response_body) { JSON.parse(response.body) }
+
   describe "GET /exercises" do
     let(:get_request) do
       get "/api/v1/exercises", headers: headers
