@@ -20,6 +20,7 @@ RSpec.describe WorkoutPlan, type: :model do
 
   describe 'associations' do
     it { should belong_to(:user) }
-    it { should have_many(:workout_sessions).dependent(:destroy) }
+    it { should have_many(:workout_plan_sessions).dependent(:destroy) }
+    it { should have_many(:workout_sessions).through(:workout_plan_sessions) }
   end
 end
