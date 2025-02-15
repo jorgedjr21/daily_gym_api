@@ -1,0 +1,6 @@
+class MakeEmailAndNameRequiredInUsers < ActiveRecord::Migration[7.2]
+  def change
+    change_column_null :users, :email, false
+    change_column_null :users, :name, false
+  end
+end
