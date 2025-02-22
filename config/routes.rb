@@ -20,4 +20,6 @@ Rails.application.routes.draw do
       resources :workout_sessions
     end
   end
+
+  match '*unmatched', to: 'application#route_not_found', via: :all
 end

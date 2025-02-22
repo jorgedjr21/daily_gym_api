@@ -3,6 +3,7 @@ services:
     build: .
     ports:
       - "3000:3000"
+    network_mode: "host"
     volumes:
       - ".:/rails"
       - gym_app_api_gems:/usr/local/bundle
