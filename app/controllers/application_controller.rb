@@ -3,6 +3,7 @@ class ApplicationController < ActionController::API
   rescue_from ActionController::RoutingError, with: :route_not_found
   rescue_from AbstractController::ActionNotFound, with: :route_not_found
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
 
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
@@ -23,5 +24,9 @@ class ApplicationController < ActionController::API
 
   def route_not_found(exception = nil)
     render json: { error: "Route not found", message: exception&.message }, status: :not_found
+  end
+
+  def set_locale
+    I18n.locale = request.headers["Accept-Language"]&.scan(/^[a-z]{2}/)&.first || I18n.default_locale
   end
 end

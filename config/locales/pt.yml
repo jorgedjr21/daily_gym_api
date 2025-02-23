@@ -27,13 +27,13 @@
 #       "yes": yup
 #       enabled: "ON"
 
-en:
+pt:
   api:
     errors:
-      unauthorized: "You need to sign in or sign up before continuing."
-      invalid_credentials: "Invalid Email or Password"
-      route_not_found: "Route not found"
-      invalid_token: "Invalid token"
+      unauthorized: "Você precisa fazer login ou se cadastrar antes de continuar."
+      invalid_credentials: "Email ou senha inválidos"
+      route_not_found: "Rota não encontrada"
+      invalid_token: "Token inválido"
     success:
-      signed_in: "Signed in successfully"
-      signed_out: "Signed out successfully"
+      signed_in: "Login realizado com sucesso"
+      signed_out: "Logout realizado com sucesso"

@@ -9,14 +9,14 @@ class Users::SessionsController < Devise::SessionsController
       sign_in(user)
       render json: { user: { id: user.id, email: user.email }, token: current_token }, status: :ok
     else
-      render json: { error: "Invalid Email or Password" }, status: :unauthorized
+      render json: { error: I18n.t("api.errors.invalid_credentials") }, status: :unauthorized
     end
   end
 
   # DELETE /users/sign_out
   def destroy
     super do |resource|
-      head :no_content and return
+      render json: { message: I18n.t("api.success.signed_out") }, status: :no_content and return
     end
   end
 
@@ -41,7 +41,7 @@ class Users::SessionsController < Devise::SessionsController
     if current_user
       head :no_content
     else
-      render json: { error: "Invalid token" }, status: :unauthorized
+      render json: { error: I18n.t("api.errors.invalid_token") }, status: :unauthorized
     end
   end
 

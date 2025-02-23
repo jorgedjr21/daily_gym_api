@@ -32,5 +32,12 @@ module App
     config.session_store :cookie_store, key: "_interslice_session"
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
+
+
+    # I18n configs
+
+    config.i18n.default_locale = :en
+    config.i18n.available_locales = [ :en, :pt ]
+    config.i18n.fallbacks = true
   end
 end
