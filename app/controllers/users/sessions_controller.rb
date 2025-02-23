@@ -3,14 +3,13 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /users/sign_in
   def create
-    super do |resource|
-      render json: {
-        user: {
-          id: resource.id,
-          email: resource.email
-        },
-        token: current_token
-      }, status: :ok and return
+    user = User.find_for_database_authentication(email: sign_in_params[:email])
+
+    if user && user.valid_password?(sign_in_params[:password])
+      sign_in(user)
+      render json: { user: { id: user.id, email: user.email }, token: current_token }, status: :ok
+    else
+      render json: { error: "Invalid Email or Password" }, status: :unauthorized
     end
   end
 
@@ -22,6 +21,22 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   private
+
+  def sign_in_params
+    params[:session] ||= params # Ensure `session` key exists
+    params.require(:session).permit(:email, :password)
+  end
+
+  def respond_with(resource, _opts = {})
+    render json: {
+      user: {
+        id: resource.id,
+        email: resource.email
+      },
+      token: current_token
+    }, status: :ok
+  end
+
   def respond_to_on_destroy
     if current_user
       head :no_content

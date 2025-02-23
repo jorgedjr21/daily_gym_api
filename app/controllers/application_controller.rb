@@ -4,6 +4,7 @@ class ApplicationController < ActionController::API
   rescue_from AbstractController::ActionNotFound, with: :route_not_found
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render json: { error: exception.message }, status: :not_found
   end
