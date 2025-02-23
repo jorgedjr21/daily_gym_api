@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+puts "Seeding database"
+
+require_relative "./seeds/exercises"
+require_relative "./seeds/users"
+
+puts "✅ Database seeded successfully!"

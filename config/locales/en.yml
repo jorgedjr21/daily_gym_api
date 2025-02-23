@@ -37,3 +37,226 @@ en:
     success:
       signed_in: "Signed in successfully"
       signed_out: "Signed out successfully"
+  exercises:
+    push_ups:
+      name: "Push-ups"
+      description: "A basic bodyweight exercise where you push yourself up and down from the ground."
+    bench_press:
+      name: "Bench Press"
+      description: "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells."
+    squats:
+      name: "Squats"
+      description: "A lower body exercise that targets the quadriceps, hamstrings, and glutes by bending the knees and lowering the hips."
+    deadlifts:
+      name: "Deadlifts"
+      description: "A strength training exercise that works the entire posterior chain by lifting a barbell from the ground to hip level."
+    pull_ups:
+      name: "Pull-ups"
+      description: "An upper body exercise where you pull your body up to a bar using your back and arms."
+    lunges:
+      name: "Lunges"
+      description: "A lower body exercise that strengthens the legs and glutes by stepping forward and lowering the body."
+    bicep_curls:
+      name: "Bicep Curls"
+      description: "An arm exercise that isolates the biceps by curling dumbbells or a barbell upward."
+    tricep_dips:
+      name: "Tricep Dips"
+      description: "An upper body exercise that targets the triceps by lowering and lifting the body using parallel bars."
+    lat_pulldown:
+      name: "Lat Pulldown"
+      description: "A machine-based exercise that targets the latissimus dorsi by pulling a weighted bar down to the chest."
+    shoulder_press:
+      name: "Shoulder Press"
+      description: "A compound movement that targets the shoulders by pressing a weight overhead."
+    leg_press:
+      name: "Leg Press"
+      description: "A machine-based exercise that targets the quadriceps, hamstrings, and glutes."
+    calf_raises:
+      name: "Calf Raises"
+      description: "A lower leg exercise that strengthens the calves by raising and lowering the heels."
+    plank:
+      name: "Plank"
+      description: "A core-strengthening isometric exercise where the body is held in a straight position."
+    rowing_machine:
+      name: "Rowing Machine"
+      description: "A cardio and strength exercise that mimics the motion of rowing."
+    leg_curl:
+      name: "Leg Curl"
+      description: "An exercise that targets the hamstrings by curling the lower legs toward the buttocks."
+    leg_extension:
+      name: "Leg Extension"
+      description: "A machine-based exercise that isolates the quadriceps."
+    hip_thrusts:
+      name: "Hip Thrusts"
+      description: "A glute-focused movement performed with a barbell or bodyweight."
+    dumbbell_fly:
+      name: "Dumbbell Fly"
+      description: "A chest isolation exercise performed with dumbbells to stretch and contract the pectoral muscles."
+    hammer_curl:
+      name: "Hammer Curl"
+      description: "A variation of the bicep curl that targets both the biceps and forearm muscles."
+    preacher_curl:
+      name: "Preacher Curl"
+      description: "An isolated biceps exercise performed using a preacher bench."
+    incline_bench_press:
+      name: "Incline Bench Press"
+      description: "A variation of the bench press that emphasizes the upper chest."
+    cable_crossovers:
+      name: "Cable Crossovers"
+      description: "An isolation exercise that targets the chest muscles using cables."
+    pec_dec:
+      name: "Pec Dec"
+      description: "A machine-based chest isolation exercise."
+    face_pulls:
+      name: "Face Pulls"
+      description: "A shoulder and upper back exercise that improves posture."
+    rear_delt_fly:
+      name: "Rear Delt Fly"
+      description: "An isolation exercise for the rear delts and upper back."
+    chest_dips:
+      name: "Chest Dips"
+      description: "A bodyweight exercise that strengthens the chest and triceps."
+    good_mornings:
+      name: "Good Mornings"
+      description: "A lower back and hamstring exercise performed with a barbell."
+    sumo_deadlift:
+      name: "Sumo Deadlift"
+      description: "A variation of the deadlift that reduces stress on the lower back."
+    romanian_deadlift:
+      name: "Romanian Deadlift"
+      description: "A hamstring-focused deadlift variation."
+    farmer_walk:
+      name: "Farmer's Walk"
+      description: "A grip and core strengthening exercise where weights are carried while walking."
+    reverse_lunges:
+      name: "Reverse Lunges"
+      description: "A lunge variation where the step is taken backward."
+    side_lunges:
+      name: "Side Lunges"
+      description: "A lateral movement that targets the inner and outer thighs."
+    box_jumps:
+      name: "Box Jumps"
+      description: "A plyometric exercise that builds explosive power."
+    jump_squats:
+      name: "Jump Squats"
+      description: "A lower body power exercise involving a jump at the top of the squat."
+    kettlebell_swings:
+      name: "Kettlebell Swings"
+      description: "A full-body explosive movement using a kettlebell."
+    turkish_getup:
+      name: "Turkish Get-Up"
+      description: "A complex, full-body movement that builds stability and strength."
+    battle_ropes:
+      name: "Battle Ropes"
+      description: "A conditioning exercise using heavy ropes for endurance and power."
+    sled_push:
+      name: "Sled Push"
+      description: "A strength and endurance exercise where a weighted sled is pushed."
+    medicine_ball_slams:
+      name: "Medicine Ball Slams"
+      description: "An explosive core exercise using a medicine ball."
+    dumbbell_bench_press:
+      name: "Dumbbell Bench Press"
+      description: "A bench press variation using dumbbells to increase range of motion."
+    barbell_bench_press:
+      name: "Barbell Bench Press"
+      description: "A classic strength exercise using a barbell to develop chest muscles."
+    incline_dumbbell_bench_press:
+      name: "Incline Dumbbell Bench Press"
+      description: "A bench press variation that targets the upper chest using dumbbells."
+    incline_barbell_bench_press:
+      name: "Incline Barbell Bench Press"
+      description: "A bench press variation that targets the upper chest using a barbell."
+    pec_deck_machine:
+      name: "Pec Deck Machine"
+      description: "A machine-based exercise that isolates the chest with a controlled fly motion."
+    ez_bar_curl:
+      name: "EZ Bar Curl"
+      description: "A bicep exercise using an EZ curl bar to reduce wrist strain."
+    cable_straight_bar_curl:
+      name: "Cable Straight Bar Curl"
+      description: "A cable machine variation of the straight bar bicep curl."
+    7x21_bicep_curl:
+      name: "7x21 Bicep Curl"
+      description: "A bicep workout involving partial and full range reps to maximize hypertrophy."
+    leg_press_machine:
+      name: "Leg Press Machine"
+      description: "A machine-based leg press exercise that strengthens the quadriceps and glutes."
+    leg_extension_machine:
+      name: "Leg Extension Machine"
+      description: "An isolation exercise for the quadriceps performed on a machine."
+    smith_machine_squat:
+      name: "Smith Machine Squat"
+      description: "A squat variation using a guided bar for support and stability."
+    hack_squat_machine:
+      name: "Hack Squat Machine"
+      description: "A machine-based squat variation that isolates the quads."
+    inner_thigh_machine:
+      name: "Inner Thigh Machine"
+      description: "A machine-based exercise to target inner thigh muscles."
+    bent_over_row:
+      name: "Bent Over Row"
+      description: "A back exercise where you pull a barbell towards your torso while bent over."
+    close_grip_triangle_row:
+      name: "Close-Grip Triangle Row"
+      description: "A seated cable row using a triangle handle for a close grip."
+    close_grip_triangle_pulldown:
+      name: "Close-Grip Triangle Pulldown"
+      description: "A lat pulldown variation using a triangle handle."
+    skull_crusher_cable:
+      name: "Cable Skull Crushers"
+      description: "A triceps exercise performed on a cable machine."
+    rope_triceps_pushdown:
+      name: "Rope Triceps Pushdown"
+      description: "A triceps pushdown exercise using a rope attachment."
+    unilateral_front_raise:
+      name: "Unilateral Front Raise"
+      description: "A shoulder isolation exercise raising one arm at a time."
+    front_raise:
+      name: "Front Raise"
+      description: "A shoulder isolation exercise raising both arms forward."
+    lateral_raise:
+      name: "Lateral Raise"
+      description: "An exercise targeting the lateral deltoids by lifting weights to the sides."
+    free_weight_shoulder_press:
+      name: "Free Weight Shoulder Press"
+      description: "A shoulder press using free weights for maximum stability engagement."
+    reverse_pec_deck:
+      name: "Reverse Pec Deck"
+      description: "A rear deltoid isolation exercise using a pec deck machine."
+    barbell_shrug:
+      name: "Barbell Shrug"
+      description: "A trapezius exercise performed with a barbell."
+    dumbbell_shrug:
+      name: "Dumbbell Shrug"
+      description: "A trapezius exercise performed with dumbbells."
+    romanian_deadlift:
+      name: "Romanian Deadlift"
+      description: "A deadlift variation focusing on hamstring engagement."
+    seated_leg_curl:
+      name: "Seated Leg Curl"
+      description: "A machine-based exercise targeting the hamstrings."
+    lying_leg_curl:
+      name: "Lying Leg Curl"
+      description: "A machine exercise isolating the hamstrings."
+    unilateral_leg_curl:
+      name: "Unilateral Leg Curl"
+      description: "A hamstring exercise performed one leg at a time."
+    sumo_smith_squat:
+      name: "Sumo Smith Machine Squat"
+      description: "A sumo squat variation performed with a Smith machine."
+    outer_thigh_machine:
+      name: "Outer Thigh Machine"
+      description: "A machine exercise targeting the outer thigh muscles."
+    close_grip_bench_press:
+      name: "Close-Grip Bench Press"
+      description: "A triceps-focused variation of the bench press."
+    cable_triceps_pushdown:
+      name: "Cable Triceps Pushdown"
+      description: "A classic triceps exercise performed on a cable machine."
+    wide_grip_lat_pulldown:
+      name: "Wide-Grip Lat Pulldown"
+      description: "A back exercise performed on a cable machine, pulling a wide-grip bar down to the chest."
+    ez_bar_curl_free:
+      name: "EZ Bar Curl (Free Weight)"
+      description: "A bicep curl variation using an EZ bar without support, requiring more stability."

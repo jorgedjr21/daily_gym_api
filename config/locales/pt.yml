@@ -37,3 +37,235 @@ pt:
     success:
       signed_in: "Login realizado com sucesso"
       signed_out: "Logout realizado com sucesso"
+  exercises:
+    push_ups:
+      name: "Flexões"
+      description: "Um exercício básico de peso corporal onde você empurra seu corpo para cima e para baixo no chão."
+    bench_press:
+      name: "Supino"
+      description: "Um exercício composto que trabalha o peito, os ombros e os tríceps usando uma barra ou halteres."
+    squats:
+      name: "Agachamentos"
+      description: "Um exercício para fortalecer as pernas, glúteos e lombar, abaixando os quadris e dobrando os joelhos."
+    deadlifts:
+      name: "Levantamento Terra"
+      description: "Um exercício de força que ativa toda a cadeia posterior ao levantar uma barra do chão até a altura do quadril."
+    pull_ups:
+      name: "Barra Fixa"
+      description: "Um exercício para parte superior do corpo onde você levanta o corpo até uma barra usando as costas e os braços."
+    lunges:
+      name: "Afundos"
+      description: "Exercício que fortalece as pernas e glúteos ao dar um passo à frente e abaixar o corpo."
+    bicep_curls:
+      name: "Rosca Bíceps"
+      description: "Exercício de braço que isola o bíceps ao levantar halteres ou uma barra."
+    tricep_dips:
+      name: "Mergulho de Tríceps"
+      description: "Exercício que fortalece os tríceps ao abaixar e levantar o corpo usando barras paralelas."
+    lat_pulldown:
+      name: "Puxada Alta"
+      description: "Exercício realizado em máquina que trabalha as costas ao puxar uma barra com pesos em direção ao peito."
+    shoulder_press:
+      name: "Desenvolvimento de Ombros"
+      description: "Movimento composto que trabalha os ombros ao empurrar um peso acima da cabeça."
+    leg_press:
+      name: "Leg Press"
+      description: "Exercício de máquina que trabalha os quadríceps, isquiotibiais e glúteos."
+    calf_raises:
+      name: "Elevação de Panturrilha"
+      description: "Exercício que fortalece as panturrilhas ao elevar e abaixar os calcanhares."
+    plank:
+      name: "Prancha"
+      description: "Exercício isométrico para fortalecer o core, mantendo o corpo reto por um período de tempo."
+    rowing_machine:
+      name: "Remada Máquina"
+      description: "Exercício aeróbico e de força que imita o movimento do remo."
+    leg_curl:
+      name: "Mesa Flexora"
+      description: "Exercício que isola os isquiotibiais ao flexionar os joelhos contra um peso."
+    leg_extension:
+      name: "Cadeira Extensora"
+      description: "Exercício que isola os quadríceps ao estender os joelhos contra resistência."
+    hip_thrusts:
+      name: "Elevação de Quadril"
+      description: "Movimento que fortalece os glúteos ao levantar os quadris usando peso."
+    dumbbell_fly:
+      name: "Crucifixo com Halteres"
+      description: "Exercício que isola o peitoral ao abrir e fechar os braços segurando halteres."
+    hammer_curl:
+      name: "Rosca Martelo"
+      description: "Variação da rosca bíceps que também trabalha os músculos do antebraço."
+    preacher_curl:
+      name: "Rosca Scott"
+      description: "Exercício de bíceps feito no banco Scott para maior isolamento muscular."
+    incline_bench_press:
+      name: "Supino Inclinado"
+      description: "Variação do supino que foca na parte superior do peitoral."
+    cable_crossovers:
+      name: "Crucifixo na Polia"
+      description: "Exercício de isolamento do peitoral realizado no cross over."
+    pec_dec:
+      name: "Peck Deck"
+      description: "Exercício de peitoral realizado em máquina com movimentos de abertura e fechamento dos braços."
+    face_pulls:
+      name: "Puxada para Rosto"
+      description: "Exercício para fortalecer ombros e parte superior das costas, melhorando a postura."
+    rear_delt_fly:
+      name: "Elevação Posterior"
+      description: "Exercício de isolamento para deltóides posteriores e parte superior das costas."
+    chest_dips:
+      name: "Mergulho no Banco"
+      description: "Exercício de peso corporal que fortalece peitoral e tríceps."
+    good_mornings:
+      name: "Good Mornings"
+      description: "Exercício que trabalha lombar e isquiotibiais ao inclinar o tronco para frente com uma barra."
+    sumo_deadlift:
+      name: "Levantamento Terra Sumo"
+      description: "Variação do levantamento terra que reduz a carga na lombar e foca mais nos glúteos e pernas."
+    romanian_deadlift:
+      name: "Levantamento Terra Romeno"
+      description: "Variação do levantamento terra que foca mais nos isquiotibiais."
+    farmer_walk:
+      name: "Caminhada do Fazendeiro"
+      description: "Exercício que fortalece pegada, core e resistência ao carregar pesos caminhando."
+    reverse_lunges:
+      name: "Afundo Reverso"
+      description: "Variação do afundo em que o passo é dado para trás."
+    side_lunges:
+      name: "Afundo Lateral"
+      description: "Movimento lateral que trabalha coxas internas e externas."
+    box_jumps:
+      name: "Saltos na Caixa"
+      description: "Exercício pliométrico que desenvolve potência explosiva."
+    jump_squats:
+      name: "Agachamento com Salto"
+      description: "Exercício de potência para pernas, combinando um agachamento com um salto."
+    kettlebell_swings:
+      name: "Swing com Kettlebell"
+      description: "Movimento explosivo com kettlebell que trabalha core e resistência."
+    turkish_getup:
+      name: "Levantamento Turco"
+      description: "Movimento complexo que trabalha força e estabilidade."
+    battle_ropes:
+      name: "Cordas Navais"
+      description: "Exercício de condicionamento feito com cordas pesadas para resistência e potência."
+    sled_push:
+      name: "Empurrão de Trenó"
+      description: "Exercício de força e resistência onde um trenó com peso é empurrado."
+    medicine_ball_slams:
+      name: "Arremesso de Medicine Ball"
+      description: "Exercício explosivo para core usando uma bola medicinal."
+    dumbbell_bench_press:
+      name: "Supino reto com halteres"
+      description: "Variação do supino reto utilizando halteres para maior amplitude de movimento."
+    barbell_bench_press:
+      name: "Supino reto com barra"
+      description: "Exercício clássico de força realizado com barra para desenvolver os músculos peitorais."
+    incline_dumbbell_bench_press:
+      name: "Supino inclinado com halteres"
+      description: "Variação do supino inclinado que foca na parte superior do peito utilizando halteres."
+    incline_barbell_bench_press:
+      name: "Supino inclinado com barra"
+      description: "Variação do supino inclinado que foca na parte superior do peito utilizando barra."
+    pec_deck_machine:
+      name: "Fly na máquina (voador)"
+      description: "Exercício de peitoral realizado em máquina com movimento controlado."
+    ez_bar_curl:
+      name: "Rosca barra W"
+      description: "Exercício de bíceps utilizando a barra W para reduzir a tensão no punho."
+    cable_straight_bar_curl:
+      name: "Rosca reta no cabo (polia)"
+      description: "Variação da rosca direta utilizando a polia."
+    7x21_bicep_curl:
+      name: "Rosca 7x21"
+      description: "Exercício de bíceps com repetições parciais e completas para máxima hipertrofia."
+    leg_press_machine:
+      name: "Leg Press na máquina"
+      description: "Exercício de perna utilizando a máquina de leg press para fortalecer os quadríceps e glúteos."
+    leg_extension_machine:
+      name: "Cadeira extensora"
+      description: "Exercício isolado para quadríceps, realizado em máquina."
+    smith_machine_squat:
+      name: "Agachamento no Smith"
+      description: "Variação do agachamento utilizando a barra guiada (Smith machine) para maior estabilidade."
+    hack_squat_machine:
+      name: "Hack Machine"
+      description: "Exercício de agachamento realizado em máquina para maior isolamento dos quadríceps."
+    inner_thigh_machine:
+      name: "Cadeira Adutora"
+      description: "Exercício para fortalecer a parte interna das coxas, utilizando máquina."
+    bent_over_row:
+      name: "Remada curvada"
+      description: "Exercício para as costas onde a barra é puxada em direção ao tronco enquanto o corpo está inclinado."
+    wide_grip_lat_pulldown:
+      name: "Puxada alta"
+      description: "Exercício para as costas onde a barra é puxada de cima até o peito."
+    close_grip_triangle_pulldown:
+      name: "Puxada alta com triângulo"
+      description: "Variação da puxada alta utilizando um pegador triangular para ativação diferente das costas."
+    close_grip_triangle_row:
+      name: "Remada baixa com triângulo"
+      description: "Exercício de remada utilizando um pegador triangular, realizado na máquina."
+    skull_crusher_cable:
+      name: "Tríceps testa no cabo"
+      description: "Exercício para tríceps realizado no cabo, simulando o movimento do tríceps testa com barra."
+    rope_triceps_pushdown:
+      name: "Tríceps corda"
+      description: "Exercício clássico de tríceps utilizando a corda na polia."
+    unilateral_front_raise:
+      name: "Elevação frontal unilateral"
+      description: "Exercício de ombro realizado com um braço de cada vez."
+    front_raise:
+      name: "Elevação frontal"
+      description: "Exercício que fortalece os deltoides anteriores ao levantar os braços para frente."
+    lateral_raise:
+      name: "Elevação lateral"
+      description: "Exercício para ombros onde os braços são levantados para os lados."
+    free_weight_shoulder_press:
+      name: "Desenvolvimento Livre"
+      description: "Variação do desenvolvimento para ombros utilizando pesos livres."
+    reverse_pec_deck:
+      name: "Posterior no Fly (voador)"
+      description: "Exercício para deltóides posteriores realizado na máquina voador (Fly)."
+    barbell_shrug:
+      name: "Trapézio com barra"
+      description: "Exercício para o trapézio realizado com barra."
+    dumbbell_shrug:
+      name: "Trapézio com halteres"
+      description: "Exercício para o trapézio realizado com halteres."
+    romanian_deadlift:
+      name: "Stiff"
+      description: "Exercício para posteriores da coxa, onde a barra é baixada mantendo as pernas quase retas."
+    seated_leg_curl:
+      name: "Cadeira flexora"
+      description: "Exercício para isquiotibiais, realizado na máquina sentada."
+    lying_leg_curl:
+      name: "Mesa flexora"
+      description: "Exercício para isquiotibiais, realizado deitado na máquina."
+    unilateral_leg_curl:
+      name: "Mesa flexora unilateral"
+      description: "Variação da mesa flexora onde apenas uma perna trabalha por vez."
+    sumo_smith_squat:
+      name: "Agachamento sumo no Smith"
+      description: "Variação do agachamento sumo realizado na barra guiada (Smith machine)."
+    outer_thigh_machine:
+      name: "Cadeira abdutora"
+      description: "Exercício para fortalecer a parte externa das coxas, realizado em máquina."
+    close_grip_bench_press:
+      name: "Supino fechado (tríceps)"
+      description: "Variação do supino que foca no tríceps ao manter as mãos mais próximas na barra."
+    cable_triceps_pushdown:
+      name: "Tríceps pulley"
+      description: "Exercício de tríceps realizado na polia para máxima contração muscular."
+    preacher_curl:
+      name: "Rosca Scott"
+      description: "Exercício de bíceps realizado no banco Scott para maior isolamento do músculo."
+    ez_bar_curl_free:
+      name: "Rosca barra W livre"
+      description: "Exercício de bíceps realizado com a barra W sem apoio, trabalhando equilíbrio e força."
+    wide_grip_lat_pulldown:
+      name: "Puxada alta pegada aberta"
+      description: "Exercício de costas realizado na máquina de polia, puxando uma barra com pegada aberta até o peito."
+    ez_bar_curl_free:
+      name: "Rosca barra W livre"
+      description: "Variação da rosca bíceps utilizando a barra W sem apoio, exigindo mais estabilidade."
