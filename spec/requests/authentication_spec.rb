@@ -6,7 +6,7 @@ RSpec.describe 'Authentication', type: :request do
   describe 'POST /users/sign_in' do
     context 'when credentials are correct' do
       it 'returns a JWT token' do
-        post '/users/sign_in', params: { user: { email: user.email, password: user.password } }
+        post '/users/sign_in', params: { email: user.email, password: user.password }
 
         expect(response).to have_http_status(:ok)
         body = JSON.parse(response.body)
@@ -16,10 +16,10 @@ RSpec.describe 'Authentication', type: :request do
 
     context 'when credentials are incorrect' do
       it 'returns an unauthorized status' do
-        post '/users/sign_in', params: { user: { email: user.email, password: 'wrongpassword' } }
+        post '/users/sign_in', params: { email: user.email, password: 'wrongpassword' }
 
         expect(response).to have_http_status(:unauthorized)
-        expect(response.body).to include('Invalid Email or password')
+        expect(JSON.parse(response.body)['error']).to eq('Invalid Email or Password')
       end
     end
   end
@@ -30,7 +30,7 @@ RSpec.describe 'Authentication', type: :request do
     end
 
     let(:auth_token) do
-      post '/users/sign_in', params: { user: { email: user.email, password: user.password } }
+      post '/users/sign_in', params: { email: user.email, password: user.password }
       response.headers['Authorization']
     end
 

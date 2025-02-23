@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Api::V1::Exercises", type: :request do
   let(:user) { create(:user) }
   let(:auth_token) do
-    post '/users/sign_in', params: { user: { email: user.email, password: user.password } }, as: :json
+    post '/users/sign_in', params: { email: user.email, password: user.password }, as: :json
     response.headers['Authorization']
   end
 
