@@ -75,7 +75,7 @@ jobs:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/gym_app_test
         run: |
-          bundle exec rails db:create db:migrate
+          bin/rails db:create db:schema:load
 
       # Step 6: Run tests with RSpec
       - name: Run RSpec tests
@@ -83,4 +83,4 @@ jobs:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/gym_app_test
           SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
-        run: bundle exec rspec --force-color .
+        run: bundle exec rspec --force-color spec/
