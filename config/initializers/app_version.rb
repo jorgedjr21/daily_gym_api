@@ -1,1 +1,1 @@
-require_relative "../../lib/version"
+require_relative "../../lib/daily_gym_api"
