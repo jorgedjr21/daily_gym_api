@@ -3,15 +3,15 @@ services:
     build: .
     ports:
       - "3000:3000"
-    network_mode: "host"
     volumes:
       - ".:/rails"
       - gym_app_api_gems:/usr/local/bundle
     depends_on:
       - db
     environment:
-      DATABSE_USER: "postgres"
-      DATABSE_PASSWORD: "password"
+      DATABASE_USER: "postgres"
+      DATABASE_PASSWORD: "password"
+      DATABASE_HOST: 'db'
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"
 
   db:
