@@ -1,6 +1,8 @@
+build:
+	docker compose build
 bash:
-	docker-compose run --rm web bash
+	docker compose run --rm daily_gym_api bash
 start:
-	docker-compose up
+	docker compose up
 specs:
-	docker-compose run --rm web bundle exec rspec
+	docker compose run --rm daily_gym_api bundle exec rspec

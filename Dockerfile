@@ -1,5 +1,5 @@
 # Use the official Ruby image
-FROM ruby:3.3.6
+FROM ruby:3.4.4
 
 # Set the working directory
 WORKDIR /rails

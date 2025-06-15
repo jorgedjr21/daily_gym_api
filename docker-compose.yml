@@ -1,5 +1,5 @@
 services:
-  web:
+  daily_gym_api:
     build: .
     ports:
       - "3000:3000"
