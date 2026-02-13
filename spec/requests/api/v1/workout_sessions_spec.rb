@@ -116,7 +116,7 @@ RSpec.describe "Api::V1::WorkoutSessions", type: :request do
         it "returns an error" do
           post_request
 
-          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response).to have_http_status(:unprocessable_content)
           expect(response_body["errors"]).
             to include(
               "Name can't be blank",
@@ -166,7 +166,7 @@ RSpec.describe "Api::V1::WorkoutSessions", type: :request do
         it "returns an error for invalid data" do
           put_request
 
-          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response).to have_http_status(:unprocessable_content)
           expect(response_body["errors"]).to include("Name can't be blank")
         end
       end
@@ -214,7 +214,7 @@ RSpec.describe "Api::V1::WorkoutSessions", type: :request do
 
           it 'must update the session exercise' do
             put_request
-            expect(response).to have_http_status(:unprocessable_entity)
+            expect(response).to have_http_status(:unprocessable_content)
             expect(response_body["errors"]).to include(
               "Workout session exercises sets must be greater than or equal to 0",
               "Workout session exercises reps must be greater than or equal to 0")

@@ -32,7 +32,7 @@ RSpec.describe 'User Registration', type: :request do
           post '/users', params: invalid_attributes
         }.not_to change(User, :count)
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         body = JSON.parse(response.body)
 
         expect(body).to include('errors')

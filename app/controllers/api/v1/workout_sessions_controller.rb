@@ -20,7 +20,7 @@ class Api::V1::WorkoutSessionsController < ApplicationController
     if workout_session.save
       render json: workout_session, include: :workout_session_exercises, status: :created
     else
-      render json: { errors: workout_session.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: workout_session.errors.full_messages }, status: :unprocessable_content
     end
   end
 
@@ -29,7 +29,7 @@ class Api::V1::WorkoutSessionsController < ApplicationController
     if @workout_session.update(workout_session_params)
       render json: @workout_session, include: :workout_session_exercises, status: :ok
     else
-      render json: { errors: @workout_session.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @workout_session.errors.full_messages }, status: :unprocessable_content
     end
   end
 

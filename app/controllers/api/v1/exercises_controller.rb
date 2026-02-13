@@ -20,7 +20,7 @@ class Api::V1::ExercisesController < ApplicationController
     if exercise.save
       render json: exercise, status: :created
     else
-      render json: { errors: exercise.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: exercise.errors.full_messages }, status: :unprocessable_content
     end
   end
 
@@ -29,7 +29,7 @@ class Api::V1::ExercisesController < ApplicationController
     if @exercise.update(exercise_params)
       render json: @exercise, status: :ok
     else
-      render json: { errors: @exercise.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @exercise.errors.full_messages }, status: :unprocessable_content
     end
   end
 
