@@ -83,7 +83,7 @@ bin/rails db:create db:migrate
 bin/rails db:seed   # loads 63+ exercises and a demo user
 ```
 
-Demo user after seed: `jorgedjr21@gmail.com` / `123456789` (role: admin)
+Demo user after seed: `admin@email.com` / `123456789` (role: admin)
 
 ## Environment Variables
 
