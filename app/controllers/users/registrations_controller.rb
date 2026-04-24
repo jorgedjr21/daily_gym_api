@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def render_resource(resource)
     if resource.errors.empty?
-      render json: resource, status: :created
+      render json: UserBlueprint.render_as_hash(resource), status: :created
     else
       render json: { errors: resource.errors.full_messages }, status: :unprocessable_content
     end

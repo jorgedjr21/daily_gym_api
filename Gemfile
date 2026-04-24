@@ -31,6 +31,7 @@ gem "bootsnap", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 #
+gem "blueprinter"
 gem "rack-cors"    # Para habilitar CORS
 gem "devise"       # Autenticação
 gem "devise-jwt"

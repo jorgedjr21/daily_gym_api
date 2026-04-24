@@ -39,4 +39,15 @@ RSpec.describe 'User Registration', type: :request do
       end
     end
   end
+
+  describe 'sensitive fields' do
+    it 'does not expose sensitive fields' do
+      post '/users', params: { user: { name: 'Safe', email: 'safe@example.com', password: 'password', password_confirmation: 'password' } }
+
+      body = JSON.parse(response.body)
+      expect(body).not_to have_key('encrypted_password')
+      expect(body).not_to have_key('reset_password_token')
+      expect(body).not_to have_key('reset_password_sent_at')
+    end
+  end
 end
