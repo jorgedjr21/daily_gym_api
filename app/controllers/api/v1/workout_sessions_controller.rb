@@ -4,7 +4,7 @@ class Api::V1::WorkoutSessionsController < ApplicationController
 
   # GET /workout_sessions
   def index
-    workout_sessions = current_user.workout_sessions
+    workout_sessions = current_user.workout_sessions.includes(:workout_session_exercises)
     render json: WorkoutSessionBlueprint.render_as_hash(workout_sessions, view: :with_exercises), status: :ok
   end
 
