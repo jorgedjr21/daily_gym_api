@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :exercises
       resources :workout_sessions
+      resources :workout_plans
     end
   end
 
