@@ -329,7 +329,6 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails (~> 6.2)
   ffaker
-  jwt
   pg (~> 1.1)
   pry-byebug
   puma (>= 5.0)

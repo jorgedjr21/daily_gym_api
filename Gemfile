@@ -34,7 +34,6 @@ gem "bootsnap", require: false
 gem "rack-cors"    # Para habilitar CORS
 gem "devise"       # Autenticação
 gem "devise-jwt"
-gem "jwt"          # Para autenticação JWT (opcional)
 gem "dotenv-rails"
 
 group :development, :test do
