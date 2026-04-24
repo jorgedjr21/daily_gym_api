@@ -1,6 +1,8 @@
 class Api::V1::ExercisesController < ApplicationController
+  include Authorizable
   before_action :authenticate_user!
   before_action :set_exercise, only: %i[show update destroy]
+  before_action :require_admin!, only: %i[create update destroy]
 
   # GET /exercises
   def index
