@@ -2,6 +2,12 @@
 
 Rails API-only para gerenciamento de treinos, exercícios e planos de treinamento.
 
+## GitHub Project
+
+- Owner: jorgedjr21
+- Project number: 1
+- Repositório: jorgedjr21/daily_gym_api
+
 ## Stack
 
 - Ruby 3.4.4 / Rails 8.1 (API-only)
