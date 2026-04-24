@@ -30,6 +30,29 @@ RSpec.describe "Api::V1::Exercises", type: :request do
       end
     end
 
+    context "when filtering by name" do
+      it "returns only exercises matching the name filter" do
+        create(:exercise, name: "Push-ups")
+        create(:exercise, name: "Pull-ups")
+        create(:exercise, name: "Squats")
+
+        get "/api/v1/exercises", params: { name: "ups" }, headers: headers
+
+        expect(response).to have_http_status(:ok)
+        expect(response_body.size).to eq(2)
+        expect(response_body.map { |e| e["name"] }).to contain_exactly("Push-ups", "Pull-ups")
+      end
+
+      it "returns all exercises when name filter is absent" do
+        create_list(:exercise, 3)
+
+        get "/api/v1/exercises", headers: headers
+
+        expect(response).to have_http_status(:ok)
+        expect(response_body.size).to eq(3)
+      end
+    end
+
     context "when unauthenticated" do
       let(:headers) { nil }
       it "returns unauthorized status" do
