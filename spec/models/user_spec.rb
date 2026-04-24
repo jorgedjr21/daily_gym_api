@@ -22,5 +22,11 @@ RSpec.describe User, type: :model do
       subject.name = nil
       expect(subject).not_to be_valid
     end
+
+    it 'is valid when updating without password' do
+      user = create(:user)
+      user.name = 'New Name'
+      expect(user).to be_valid
+    end
   end
 end
