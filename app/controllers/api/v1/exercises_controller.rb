@@ -5,12 +5,12 @@ class Api::V1::ExercisesController < ApplicationController
   # GET /exercises
   def index
     exercises = Exercise.all
-    render json: exercises, status: :ok
+    render json: ExerciseBlueprint.render_as_hash(exercises), status: :ok
   end
 
   # GET /exercises/:id
   def show
-    render json: @exercise, status: :ok
+    render json: ExerciseBlueprint.render_as_hash(@exercise), status: :ok
   end
 
   # POST /exercises
@@ -18,7 +18,7 @@ class Api::V1::ExercisesController < ApplicationController
     exercise = Exercise.new(exercise_params)
 
     if exercise.save
-      render json: exercise, status: :created
+      render json: ExerciseBlueprint.render_as_hash(exercise), status: :created
     else
       render json: { errors: exercise.errors.full_messages }, status: :unprocessable_content
     end
@@ -27,7 +27,7 @@ class Api::V1::ExercisesController < ApplicationController
   # PUT /exercises/:id
   def update
     if @exercise.update(exercise_params)
-      render json: @exercise, status: :ok
+      render json: ExerciseBlueprint.render_as_hash(@exercise), status: :ok
     else
       render json: { errors: @exercise.errors.full_messages }, status: :unprocessable_content
     end

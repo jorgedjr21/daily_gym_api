@@ -29,10 +29,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def respond_with(resource, _opts = {})
     render json: {
-      user: {
-        id: resource.id,
-        email: resource.email
-      },
+      user: UserBlueprint.render_as_hash(resource),
       token: current_token
     }, status: :ok
   end
