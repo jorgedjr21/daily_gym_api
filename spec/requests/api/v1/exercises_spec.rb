@@ -2,12 +2,18 @@ require 'rails_helper'
 
 RSpec.describe "Api::V1::Exercises", type: :request do
   let(:user) { create(:user) }
-  let(:auth_token) do
-    post '/users/sign_in', params: { email: user.email, password: user.password }, as: :json
-    response.headers['Authorization']
+  let(:admin_user) { create(:user, :admin) }
+
+  let(:auth_headers_for) do
+    ->(u) {
+      post '/users/sign_in', params: { email: u.email, password: u.password }, as: :json
+      token = JSON.parse(response.body)["token"]
+      { "Authorization" => token, "Content-Type" => "application/json" }
+    }
   end
 
-  let(:headers) { { "Authorization" => auth_token, "Content-Type" => "application/json" } }
+  let(:headers) { auth_headers_for.call(user) }
+  let(:admin_headers) { auth_headers_for.call(admin_user) }
   let(:response_body) { JSON.parse(response.body) }
 
   describe "GET /exercises" do
@@ -16,7 +22,7 @@ RSpec.describe "Api::V1::Exercises", type: :request do
     end
     context 'when authenticated' do
       it "returns all exercises for authenticated users" do
-        create(:exercise, name: "Push-ups")
+        create(:exercise)
         get_request
 
         expect(response).to have_http_status(:ok)
@@ -36,7 +42,7 @@ RSpec.describe "Api::V1::Exercises", type: :request do
   end
 
   describe "GET /api/v1/exercises/:id" do
-    let(:exercise) { create(:exercise, name: "Push-ups") }
+    let(:exercise) { create(:exercise) }
     let(:get_request) { get "/api/v1/exercises/#{exercise.id}", headers: headers }
 
     context "when authenticated" do
@@ -44,7 +50,7 @@ RSpec.describe "Api::V1::Exercises", type: :request do
         get_request
 
         expect(response).to have_http_status(:ok)
-        expect(response_body["name"]).to eq("Push-ups")
+        expect(response_body["name"]).to eq(exercise.name)
         expect(response_body["id"]).to eq(exercise.id)
       end
 
@@ -72,13 +78,17 @@ RSpec.describe "Api::V1::Exercises", type: :request do
       }
     end
 
-    let(:post_request) do
+    let(:post_request_as_admin) do
+      post "/api/v1/exercises", params: params.to_json, headers: admin_headers
+    end
+
+    let(:post_request_as_user) do
       post "/api/v1/exercises", params: params.to_json, headers: headers
     end
 
-    context "when authenticated" do
+    context "when admin" do
       it "creates a new exercise" do
-        expect { post_request }.to change(Exercise, :count).by(1)
+        expect { post_request_as_admin }.to change(Exercise, :count).by(1)
 
         expect(response).to have_http_status(:created)
         expect(response_body["name"]).to eq("Push-ups")
@@ -87,13 +97,13 @@ RSpec.describe "Api::V1::Exercises", type: :request do
 
       context 'with invalid params' do
         let(:params) do
-        {
-          exercise: { name: "", description: "A basic bodyweight exercise" }
-        }
+          {
+            exercise: { name: "", description: "A basic bodyweight exercise" }
+          }
         end
 
         it "returns unprocessable entity" do
-          post_request
+          post_request_as_admin
 
           expect(response).to have_http_status(:unprocessable_content)
           expect(response_body).to eq({ "errors" => [ "Name can't be blank" ] })
@@ -101,18 +111,25 @@ RSpec.describe "Api::V1::Exercises", type: :request do
       end
     end
 
-    context "when unauthenticated" do
-      let(:headers) { nil }
+    context "when regular user (non-admin)" do
+      it "returns forbidden" do
+        post_request_as_user
 
+        expect(response).to have_http_status(:forbidden)
+        expect(response_body["error"]).to eq("You are not authorized to perform this action.")
+      end
+    end
+
+    context "when unauthenticated" do
       it "returns unauthorized status" do
-        post_request
+        post "/api/v1/exercises", params: params.to_json, headers: nil
         expect(response).to have_http_status(:unauthorized)
       end
     end
   end
 
   describe "PUT /api/v1/exercises/:id" do
-    let(:exercise) { create(:exercise, name: "Push-ups", description: "Old description") }
+    let(:exercise) { create(:exercise) }
     let(:exercise_id) { exercise.id }
     let(:params) do
       {
@@ -120,17 +137,20 @@ RSpec.describe "Api::V1::Exercises", type: :request do
       }
     end
 
-    let(:put_request) do
+    let(:put_request_as_admin) do
+      put "/api/v1/exercises/#{exercise_id}", params: params.to_json, headers: admin_headers
+    end
+
+    let(:put_request_as_user) do
       put "/api/v1/exercises/#{exercise_id}", params: params.to_json, headers: headers
     end
 
-    context "when authenticated" do
+    context "when admin" do
       it "updates the exercise" do
-        put_request
+        put_request_as_admin
 
         expect(response).to have_http_status(:ok)
-        body = JSON.parse(response.body)
-        expect(body["description"]).to eq("Updated description")
+        expect(JSON.parse(response.body)["description"]).to eq("Updated description")
       end
 
       context 'with invalid params' do
@@ -141,7 +161,7 @@ RSpec.describe "Api::V1::Exercises", type: :request do
         end
 
         it "returns unprocessable entity for invalid params" do
-          put_request
+          put_request_as_admin
 
           expect(response).to have_http_status(:unprocessable_content)
           expect(JSON.parse(response.body)).to eq({ "errors" => [ "Name can't be blank" ] })
@@ -152,7 +172,7 @@ RSpec.describe "Api::V1::Exercises", type: :request do
         let(:exercise_id) { 999 }
 
         it "returns not found" do
-          put_request
+          put_request_as_admin
 
           expect(response).to have_http_status(:not_found)
           expect(JSON.parse(response.body)).to eq({ "error" => "Exercise not found" })
@@ -160,26 +180,38 @@ RSpec.describe "Api::V1::Exercises", type: :request do
       end
     end
 
-    context "when unauthenticated" do
-      let(:headers) { nil }
-      it "returns unauthorized status" do
-        put_request
+    context "when regular user (non-admin)" do
+      it "returns forbidden" do
+        put_request_as_user
 
+        expect(response).to have_http_status(:forbidden)
+        expect(response_body["error"]).to eq("You are not authorized to perform this action.")
+      end
+    end
+
+    context "when unauthenticated" do
+      it "returns unauthorized status" do
+        put "/api/v1/exercises/#{exercise_id}", params: params.to_json, headers: nil
         expect(response).to have_http_status(:unauthorized)
       end
     end
   end
 
   describe "DELETE /api/v1/exercises/:id" do
-    let!(:exercise) { create(:exercise, name: "Push-ups") }
+    let!(:exercise) { create(:exercise) }
     let(:exercise_id) { exercise.id }
-    let(:delete_request) do
+
+    let(:delete_request_as_admin) do
+      delete "/api/v1/exercises/#{exercise_id}", headers: admin_headers
+    end
+
+    let(:delete_request_as_user) do
       delete "/api/v1/exercises/#{exercise_id}", headers: headers
     end
 
-    context "when authenticated" do
+    context "when admin" do
       it "deletes the exercise" do
-        expect { delete_request }.to change(Exercise, :count).by(-1)
+        expect { delete_request_as_admin }.to change(Exercise, :count).by(-1)
 
         expect(response).to have_http_status(:no_content)
         expect(Exercise.exists?(exercise.id)).to be_falsey
@@ -189,7 +221,7 @@ RSpec.describe "Api::V1::Exercises", type: :request do
         let(:exercise_id) { 999 }
 
         it "returns not found" do
-          delete_request
+          delete_request_as_admin
 
           expect(response).to have_http_status(:not_found)
           expect(JSON.parse(response.body)).to eq({ "error" => "Exercise not found" })
@@ -197,12 +229,18 @@ RSpec.describe "Api::V1::Exercises", type: :request do
       end
     end
 
+    context "when regular user (non-admin)" do
+      it "returns forbidden" do
+        delete_request_as_user
+
+        expect(response).to have_http_status(:forbidden)
+        expect(response_body["error"]).to eq("You are not authorized to perform this action.")
+      end
+    end
+
     context "when unauthenticated" do
-      let(:headers) { nil }
-
       it "returns unauthorized status" do
-        delete_request
-
+        delete "/api/v1/exercises/#{exercise_id}", headers: nil
         expect(response).to have_http_status(:unauthorized)
       end
     end
