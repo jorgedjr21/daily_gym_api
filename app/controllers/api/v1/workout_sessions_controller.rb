@@ -5,7 +5,11 @@ class Api::V1::WorkoutSessionsController < ApplicationController
   # GET /workout_sessions
   def index
     workout_sessions = current_user.workout_sessions.includes(:workout_session_exercises)
-    render json: WorkoutSessionBlueprint.render_as_hash(workout_sessions, view: :with_exercises), status: :ok
+    pagy, records = pagy(workout_sessions, limit: params.fetch(:per_page, 20).to_i)
+    render json: {
+      data: WorkoutSessionBlueprint.render_as_hash(records, view: :with_exercises),
+      pagination: pagy_metadata(pagy)
+    }, status: :ok
   end
 
   # GET /workout_sessions/:id

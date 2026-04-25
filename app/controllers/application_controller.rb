@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
   include Devise::Controllers::Helpers
+  include Pagy::Method
   rescue_from ActionController::RoutingError, with: :route_not_found
   rescue_from AbstractController::ActionNotFound, with: :route_not_found
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -28,5 +29,18 @@ class ApplicationController < ActionController::API
 
   def set_locale
     I18n.locale = request.headers["Accept-Language"]&.scan(/^[a-z]{2}/)&.first || I18n.default_locale
+  end
+
+  def pagy_metadata(pagy)
+    {
+      page: pagy.page,
+      limit: pagy.limit,
+      count: pagy.count,
+      pages: pagy.pages,
+      from: pagy.from,
+      to: pagy.to,
+      prev: pagy.previous,
+      next: pagy.next
+    }
   end
 end

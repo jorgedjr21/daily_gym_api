@@ -8,7 +8,11 @@ class Api::V1::ExercisesController < ApplicationController
   def index
     exercises = Exercise.all
     exercises = exercises.where("name ILIKE ?", "%#{params[:name]}%") if params[:name].present?
-    render json: ExerciseBlueprint.render_as_hash(exercises), status: :ok
+    pagy, records = pagy(exercises, limit: params.fetch(:per_page, 20).to_i)
+    render json: {
+      data: ExerciseBlueprint.render_as_hash(records),
+      pagination: pagy_metadata(pagy)
+    }, status: :ok
   end
 
   # GET /exercises/:id

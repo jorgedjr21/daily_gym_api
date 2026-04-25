@@ -25,8 +25,14 @@ RSpec.describe "Api::V1::WorkoutSessions", type: :request do
       it "returns all workout sessions for the user" do
         get_request
         expect(response).to have_http_status(:ok)
-        expect(response_body.size).to eq(2)
-        expect(response_body.map { |s| s["name"] }).to contain_exactly("Session A", "Session B")
+        expect(response_body["data"].size).to eq(2)
+        expect(response_body["data"].map { |s| s["name"] }).to contain_exactly("Session A", "Session B")
+      end
+
+      it "includes pagination metadata" do
+        get_request
+        expect(response).to have_http_status(:ok)
+        expect(response_body["pagination"]).to include("page", "limit", "count", "pages")
       end
     end
 
