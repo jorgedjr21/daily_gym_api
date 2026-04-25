@@ -7,7 +7,7 @@ RSpec.describe Exercise, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:workout_session_exercises) }
+    it { should have_many(:workout_session_exercises).dependent(:destroy) }
     it { should have_many(:workout_sessions).through(:workout_session_exercises) }
   end
 end
