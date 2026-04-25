@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :exercise do
-    name { "Push-ups" }
+    sequence(:name) { |n| "Exercise #{n}" }
     description { "A basic bodyweight exercise." }
   end
 end
