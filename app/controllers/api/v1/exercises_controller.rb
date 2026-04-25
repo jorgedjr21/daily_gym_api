@@ -7,6 +7,7 @@ class Api::V1::ExercisesController < ApplicationController
   # GET /exercises
   def index
     exercises = Exercise.all
+    exercises = exercises.where("name ILIKE ?", "%#{params[:name]}%") if params[:name].present?
     render json: ExerciseBlueprint.render_as_hash(exercises), status: :ok
   end
 
