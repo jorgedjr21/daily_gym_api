@@ -26,7 +26,7 @@ RSpec.describe "Api::V1::Exercises", type: :request do
         get_request
 
         expect(response).to have_http_status(:ok)
-        expect(response_body.size).to eq(1)
+        expect(response_body["data"].size).to eq(1)
       end
     end
 
@@ -39,8 +39,8 @@ RSpec.describe "Api::V1::Exercises", type: :request do
         get "/api/v1/exercises", params: { name: "ups" }, headers: headers
 
         expect(response).to have_http_status(:ok)
-        expect(response_body.size).to eq(2)
-        expect(response_body.map { |e| e["name"] }).to contain_exactly("Push-ups", "Pull-ups")
+        expect(response_body["data"].size).to eq(2)
+        expect(response_body["data"].map { |e| e["name"] }).to contain_exactly("Push-ups", "Pull-ups")
       end
 
       it "returns all exercises when name filter is absent" do
@@ -49,7 +49,7 @@ RSpec.describe "Api::V1::Exercises", type: :request do
         get "/api/v1/exercises", headers: headers
 
         expect(response).to have_http_status(:ok)
-        expect(response_body.size).to eq(3)
+        expect(response_body["data"].size).to eq(3)
       end
     end
 

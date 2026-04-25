@@ -24,8 +24,17 @@ RSpec.describe "Api::V1::WorkoutPlans", type: :request do
         get "/api/v1/workout_plans", headers: headers
 
         expect(response).to have_http_status(:ok)
-        expect(response_body.size).to eq(1)
-        expect(response_body.first["name"]).to eq("My Plan")
+        expect(response_body["data"].size).to eq(1)
+        expect(response_body["data"].first["name"]).to eq("My Plan")
+      end
+
+      it "includes pagination metadata" do
+        create(:workout_plan, user: user)
+
+        get "/api/v1/workout_plans", headers: headers
+
+        expect(response).to have_http_status(:ok)
+        expect(response_body["pagination"]).to include("page", "limit", "count", "pages")
       end
     end
 

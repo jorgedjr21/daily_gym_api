@@ -36,6 +36,7 @@ gem "rack-cors"    # Para habilitar CORS
 gem "devise"       # Autenticação
 gem "devise-jwt"
 gem "dotenv-rails"
+gem "pagy"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

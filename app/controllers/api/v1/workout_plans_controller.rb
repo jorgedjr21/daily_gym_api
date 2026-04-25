@@ -4,7 +4,11 @@ class Api::V1::WorkoutPlansController < ApplicationController
 
   def index
     workout_plans = current_user.workout_plans
-    render json: WorkoutPlanBlueprint.render_as_hash(workout_plans, view: :with_sessions), status: :ok
+    pagy, records = pagy(workout_plans, limit: params.fetch(:per_page, 20).to_i)
+    render json: {
+      data: WorkoutPlanBlueprint.render_as_hash(records, view: :with_sessions),
+      pagination: pagy_metadata(pagy)
+    }, status: :ok
   end
 
   def show
