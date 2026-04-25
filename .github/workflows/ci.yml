@@ -74,6 +74,7 @@ jobs:
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/gym_app_test
+          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE || 'test-secret-key-base-for-ci-only' }}
         run: |
           bin/rails db:create db:schema:load
 
@@ -82,5 +83,5 @@ jobs:
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/gym_app_test
-          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE || 'test-secret-key-base-for-ci-only' }}
         run: bundle exec rspec --force-color spec/
