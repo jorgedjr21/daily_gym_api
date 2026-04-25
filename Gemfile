@@ -35,7 +35,6 @@ gem "blueprinter"
 gem "rack-cors"    # Para habilitar CORS
 gem "devise"       # Autenticação
 gem "devise-jwt"
-gem "jwt"          # Para autenticação JWT (opcional)
 gem "dotenv-rails"
 gem "blueprinter"
 
