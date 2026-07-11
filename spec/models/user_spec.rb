@@ -28,5 +28,20 @@ RSpec.describe User, type: :model do
       user.name = 'New Name'
       expect(user).to be_valid
     end
+
+    it 'defaults role to member when not set' do
+      user = create(:user)
+      expect(user.role).to eq('member')
+    end
+
+    it 'is valid with role admin' do
+      subject.role = 'admin'
+      expect(subject).to be_valid
+    end
+
+    it 'is not valid with a role outside the allowed list' do
+      subject.role = 'superadmin'
+      expect(subject).not_to be_valid
+    end
   end
 end
