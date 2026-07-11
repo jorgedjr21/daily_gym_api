@@ -40,6 +40,26 @@ RSpec.describe 'User Registration', type: :request do
     end
   end
 
+  describe 'role assignment' do
+    it 'assigns the default member role on self-registration' do
+      post '/users', params: { user: { name: 'Test', email: 'member@example.com', password: 'password', password_confirmation: 'password' } }
+
+      expect(User.find_by(email: 'member@example.com').role).to eq('member')
+    end
+
+    it 'ignores a role param injected in the payload to prevent privilege escalation' do
+      post '/users', params: {
+        user: {
+          name: 'Attacker', email: 'attacker@example.com', password: 'password',
+          password_confirmation: 'password', role: 'admin'
+        }
+      }
+
+      expect(response).to have_http_status(:created)
+      expect(User.find_by(email: 'attacker@example.com').role).to eq('member')
+    end
+  end
+
   describe 'sensitive fields' do
     it 'does not expose sensitive fields' do
       post '/users', params: { user: { name: 'Safe', email: 'safe@example.com', password: 'password', password_confirmation: 'password' } }
