@@ -6,9 +6,12 @@ class User < ApplicationRecord
   has_many :workout_plans, dependent: :destroy
   has_many :workout_sessions, dependent: :destroy
 
+  ROLES = %w[admin member].freeze
+
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :name, presence: true
   validates :password, presence: true, length: { minimum: 6 }, if: :password_required?
+  validates :role, inclusion: { in: ROLES }, allow_nil: false
 
   private
 
