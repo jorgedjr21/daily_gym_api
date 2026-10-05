@@ -181,7 +181,7 @@ GEM
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
-    pg (1.6.3-x86_64-linux)
+    pg (1.7.0-x86_64-linux)
     pp (0.6.4)
       prettyprint
     prettyprint (0.2.0)
@@ -341,7 +341,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2)
   ffaker
   pagy
-  pg (~> 1.1)
+  pg (~> 1.7)
   pry-byebug
   puma (>= 5.0)
   rack-cors
